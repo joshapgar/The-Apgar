@@ -1,0 +1,30 @@
+{
+  "name": "the-apgar",
+  "version": "1.0.0",
+  "description": "The Base Apgar Theme",
+  "main": "index.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joshapgar/the-apgar.git"
+  },
+  "author": "Josh Apgar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joshapgar/the-apgar/issues"
+  },
+  "homepage": "https://github.com/joshapgar/the-apgar#readme",
+  "devDependencies": {
+    "browser-sync": "^2.16.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-imagemin": "^3.0.3",
+    "gulp-jshint": "^2.0.1",
+    "gulp-notify": "^2.2.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-sass": "^2.3.2",
+    "jshint": "^2.9.3"
+  }
+}
