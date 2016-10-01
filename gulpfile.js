@@ -2,9 +2,13 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var jshint = require('gulp-jshint');
 var concat = require('gulp-concat');
+var uglify = require('gulp-uglify');
 var imagemin = require('gulp-imagemin');
 var plumber = require('gulp-plumber');
 var notify = require('gulp-notify');
+var cleanCSS = require('gulp-clean-css');
+var sourcemaps = require('gulp-sourcemaps');
+
 var browserSync = require('browser-sync').create();
 
 var plumberErrorHandler = { errorHandler: notify.onError({
@@ -21,12 +25,20 @@ gulp.task('sass', function(){
 	.pipe(browserSync.stream())
 });
 
+gulp.task('minify-css', function(){
+	gulp.src('./library/css/*.css')
+	.pipe(cleanCSS())
+	.pipe(gulp.dest('./library/css'));
+});
+
 gulp.task('js', function(){
-	gulp.src('./library/js/**/*.js')
+	gulp.src(['./library/js/libs/*.js', './library/js/scripts.js'])
 	.pipe(plumber(plumberErrorHandler))
 	.pipe(jshint())
 	.pipe(jshint.reporter('fail'))
 	.pipe(concat('main.js'))
+	.pipe(gulp.dest('./library/js'))
+	.pipe(uglify())
 	.pipe(gulp.dest('./library/js'))
 	.pipe(browserSync.stream())
 });
@@ -53,4 +65,5 @@ gulp.task('watch', ['sass', 'js', 'img'], function(){
 	gulp.watch('./**/*.php').on('change', browserSync.reload);
 })
 
-gulp.task('default', ['sass', 'js', 'img']);
+gulp.task('default', ['sass', 'minify-css', 'js', 'img']);
+
