@@ -1,13 +1,10 @@
 <?php get_header(); ?>
-
-			<div id="content">
-
-				<div id="inner-content" class="wrap cf">
-
-					<main id="main" class="m-all t-2of3 d-5of7 cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
-
+	<div class="container">
+		<div id="inner-content">
+			<div class="row">
+				<main id="main" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 						<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-
 							<?php
 								/*
 								 * Ah, post formats. Nature's greatest mystery (aside from the sloth).
@@ -24,11 +21,8 @@
 								*/
 								get_template_part( 'post-formats/format', get_post_format() );
 							?>
-
 						<?php endwhile; ?>
-
 						<?php else : ?>
-
 							<article id="post-not-found" class="hentry cf">
 									<header class="article-header">
 										<h1><?php _e( 'Oops, Post Not Found!', 'bonestheme' ); ?></h1>
@@ -40,15 +34,10 @@
 											<p><?php _e( 'This is the error message in the single.php template.', 'bonestheme' ); ?></p>
 									</footer>
 							</article>
-
 						<?php endif; ?>
-
-					</main>
-
-					<?php get_sidebar(); ?>
-
-				</div>
-
+					</div>
+				</main>
 			</div>
-
+		</div>
+	</div>
 <?php get_footer(); ?>
